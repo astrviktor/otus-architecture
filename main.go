@@ -18,11 +18,11 @@ func SqueareRoot(a, b, c float64) ([]float64, error) {
 		}, nil
 	}
 
-	if D < 0 {
+	if D < -epsilon {
 		return []float64{}, nil
 	}
 
-	if D > 0 {
+	if D > epsilon {
 		return []float64{
 			-b + math.Sqrt(D)/(2*a),
 			-b - math.Sqrt(D)/(2*a),
