@@ -12,6 +12,7 @@ func TestSqueareRoot(t *testing.T) {
 	}{
 		{1, 0, 1, []float64{}},
 		{1, 0, -1, []float64{1, -1}},
+		{1, 2, 1, []float64{-1}},
 	}
 
 	for _, test := range tests {
