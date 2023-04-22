@@ -14,5 +14,5 @@ jobs:
           go-version: 1.19
 
       - name: Test
-        run: go test -v ./...
+        run: make tests
 

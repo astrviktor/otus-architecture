@@ -1,4 +1,4 @@
-package main
+package hw01
 
 import "errors"
 
