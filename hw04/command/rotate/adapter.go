@@ -6,19 +6,23 @@ import (
 )
 
 type RotateAdapter struct {
-	*object.Object
+	obj *object.Object
 }
 
 func NewRotateAdapter(obj *object.Object) *RotateAdapter {
-	return &RotateAdapter{obj}
+	return &RotateAdapter{obj: obj}
+}
+
+func (a *RotateAdapter) GetObject() *object.Object {
+	return a.obj
 }
 
 func (a *RotateAdapter) GetDirection() (int, error) {
-	return getters.GetInt(a.GetProperty("DirectionNumber"))
+	return getters.GetInt(a.obj.GetProperty("DirectionNumber"))
 }
 
 func (a *RotateAdapter) SetDirection(n int) error {
-	d, err := getters.GetInt(a.GetProperty("Direction"))
+	d, err := getters.GetInt(a.obj.GetProperty("Direction"))
 	if err != nil {
 		return err
 	}
@@ -27,5 +31,5 @@ func (a *RotateAdapter) SetDirection(n int) error {
 		n = n - d
 	}
 
-	return a.SetProperty("DirectionNumber", n)
+	return a.obj.SetProperty("DirectionNumber", n)
 }

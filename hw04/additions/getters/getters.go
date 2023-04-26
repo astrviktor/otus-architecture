@@ -31,6 +31,19 @@ func GetInt(i interface{}, err error) (int, error) {
 	return value, nil
 }
 
+func GetError(i interface{}, err error) (error, error) {
+	if err != nil {
+		return nil, err
+	}
+
+	value, ok := i.(error)
+	if !ok {
+		return nil, ErrTypeCast
+	}
+
+	return value, nil
+}
+
 var (
 	ErrTypeCast = errors.New("type cast error")
 )
