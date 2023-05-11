@@ -2,8 +2,9 @@ package thread
 
 import (
 	"fmt"
-	"otus-architecture/hw07/additions/queue"
-	"otus-architecture/hw07/exception"
+	"otus-architecture/hw08/additions/queue"
+	"otus-architecture/hw08/exception"
+	"otus-architecture/hw08/object"
 	"reflect"
 )
 
@@ -22,25 +23,25 @@ func NewThreadCommand(obj ThreadInterface) *ThreadCommand {
 	return &ThreadCommand{obj: obj}
 }
 
-func (c *ThreadCommand) Execute() error {
+func (c *ThreadCommand) Execute() (*object.Object, error) {
 	queue, err := c.obj.GetQueueChannel()
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	hardStopChannel, err := c.obj.GetHardStopChannel()
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	softStopChannel, err := c.obj.GetSoftStopChannel()
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	endChannel, err := c.obj.GetEndChannel()
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	exceptionHandler := exception.NewException()
@@ -51,7 +52,7 @@ func (c *ThreadCommand) Execute() error {
 		for cmd := range queue {
 			fmt.Println(reflect.TypeOf(cmd).String())
 
-			err := cmd.Execute()
+			_, err := cmd.Execute()
 
 			if err != nil {
 				exceptionHandler.Handle(cmd, err)
@@ -72,5 +73,5 @@ func (c *ThreadCommand) Execute() error {
 		close(endChannel)
 	}()
 
-	return nil
+	return nil, nil
 }

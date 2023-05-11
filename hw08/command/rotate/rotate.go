@@ -1,18 +1,12 @@
 package rotate
 
-import "otus-architecture/hw07/object"
-
-type RotateInterface interface {
-	GetObject() *object.Object
-	GetDirection() (int, error)
-	SetDirection(n int) error
-}
+import "otus-architecture/hw08/object"
 
 type RotateCommand struct {
-	obj RotateInterface
+	obj *RotateAdapter
 }
 
-func NewRotateCommand(obj RotateInterface) *RotateCommand {
+func NewRotateCommand(obj *RotateAdapter) *RotateCommand {
 	return &RotateCommand{obj: obj}
 }
 
@@ -20,13 +14,15 @@ func (c *RotateCommand) GetObject() *object.Object {
 	return c.obj.GetObject()
 }
 
-func (c *RotateCommand) Execute() error {
+func (c *RotateCommand) Execute() (*object.Object, error) {
 	n, err := c.obj.GetDirection()
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	n = n + 1
 
-	return c.obj.SetDirection(n)
+	err = c.obj.SetDirection(n)
+
+	return c.obj.obj, err
 }

@@ -1,7 +1,8 @@
 package macrocommand
 
 import (
-	"otus-architecture/hw07/command"
+	"otus-architecture/hw08/command"
+	"otus-architecture/hw08/object"
 )
 
 type MacroCommand struct {
@@ -12,12 +13,12 @@ func NewMacroCommand(commands ...command.CommandInterface) *MacroCommand {
 	return &MacroCommand{commands: commands}
 }
 
-func (c *MacroCommand) Execute() error {
+func (c *MacroCommand) Execute() (*object.Object, error) {
 	for _, cmd := range c.commands {
-		if err := cmd.Execute(); err != nil {
-			return err
+		if _, err := cmd.Execute(); err != nil {
+			return nil, err
 		}
 	}
 
-	return nil
+	return nil, nil
 }

@@ -2,7 +2,7 @@ package checkfuel
 
 import (
 	"github.com/stretchr/testify/require"
-	"otus-architecture/hw07/object"
+	"otus-architecture/hw08/object"
 	"testing"
 )
 
@@ -14,7 +14,7 @@ func TestCheckFuelOk(t *testing.T) {
 
 	checkFuelAdapter := NewCheckFuelAdapter(obj)
 	checkFuelCommand := NewCheckFuelCommand(checkFuelAdapter)
-	err := checkFuelCommand.Execute()
+	_, err := checkFuelCommand.Execute()
 
 	require.Equal(t, nil, err)
 }
@@ -27,7 +27,7 @@ func TestCheckFuelErrorFuelNotEnough(t *testing.T) {
 
 	checkFuelAdapter := NewCheckFuelAdapter(obj)
 	checkFuelCommand := NewCheckFuelCommand(checkFuelAdapter)
-	err := checkFuelCommand.Execute()
+	_, err := checkFuelCommand.Execute()
 
 	require.Equal(t, ErrFuelNotEnough, err)
 }
@@ -37,7 +37,7 @@ func TestCheckFuelErrorGetFuel(t *testing.T) {
 
 	checkFuelAdapter := NewCheckFuelAdapter(obj)
 	checkFuelCommand := NewCheckFuelCommand(checkFuelAdapter)
-	err := checkFuelCommand.Execute()
+	_, err := checkFuelCommand.Execute()
 
 	require.Equal(t, object.ErrNoDataByKey, err)
 }

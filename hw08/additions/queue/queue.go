@@ -3,7 +3,7 @@ package queue
 import (
 	"errors"
 	"fmt"
-	"otus-architecture/hw07/command"
+	"otus-architecture/hw08/command"
 )
 
 type Element command.CommandInterface
@@ -59,4 +59,4 @@ func (q *Queue) Peek() (Element, error) {
 
 const QueueMaxSize = 100
 
-var CommandQueue *Queue
+var CommandQueue = New(100)

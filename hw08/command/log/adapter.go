@@ -1,8 +1,8 @@
 package log
 
 import (
-	"otus-architecture/hw07/additions/getters"
-	"otus-architecture/hw07/object"
+	"otus-architecture/hw08/additions/getters"
+	"otus-architecture/hw08/object"
 )
 
 type LogAdapter struct {

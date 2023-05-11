@@ -1,12 +1,12 @@
 package exception
 
 import (
-	"otus-architecture/hw07/additions/queue"
-	"otus-architecture/hw07/command"
-	"otus-architecture/hw07/command/log"
-	"otus-architecture/hw07/command/repeat"
-	"otus-architecture/hw07/command/repeatcount"
-	"otus-architecture/hw07/object"
+	"otus-architecture/hw08/additions/queue"
+	"otus-architecture/hw08/command"
+	"otus-architecture/hw08/command/log"
+	"otus-architecture/hw08/command/repeat"
+	"otus-architecture/hw08/command/repeatcount"
+	"otus-architecture/hw08/object"
 )
 
 func AddRepeatCommand(cmd command.CommandInterface, err error) {

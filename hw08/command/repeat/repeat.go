@@ -1,7 +1,8 @@
 package repeat
 
 import (
-	"otus-architecture/hw07/command"
+	"otus-architecture/hw08/command"
+	"otus-architecture/hw08/object"
 )
 
 type RepeatCommand struct {
@@ -12,6 +13,6 @@ func NewRepeatCommand(cmd command.CommandInterface) *RepeatCommand {
 	return &RepeatCommand{cmd: cmd}
 }
 
-func (c *RepeatCommand) Execute() error {
+func (c *RepeatCommand) Execute() (*object.Object, error) {
 	return c.cmd.Execute()
 }

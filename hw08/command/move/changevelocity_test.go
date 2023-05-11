@@ -2,10 +2,10 @@ package move
 
 import (
 	"github.com/stretchr/testify/require"
-	"otus-architecture/hw07/additions/vector"
-	"otus-architecture/hw07/command/rotate"
-	"otus-architecture/hw07/macrocommand"
-	"otus-architecture/hw07/object"
+	"otus-architecture/hw08/additions/vector"
+	"otus-architecture/hw08/command/rotate"
+	"otus-architecture/hw08/macrocommand"
+	"otus-architecture/hw08/object"
 	"testing"
 )
 
@@ -28,7 +28,7 @@ func TestChangeVelocityOk(t *testing.T) {
 		moveCommand,
 	)
 
-	err := macroCommand.Execute()
+	_, err := macroCommand.Execute()
 	require.Equal(t, nil, err)
 
 	velocityVector, err := obj.GetProperty("VelocityVector")

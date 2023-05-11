@@ -2,7 +2,7 @@ package burnfuel
 
 import (
 	"github.com/stretchr/testify/require"
-	"otus-architecture/hw07/object"
+	"otus-architecture/hw08/object"
 	"testing"
 )
 
@@ -14,7 +14,7 @@ func TestBurnFuelOk(t *testing.T) {
 
 	burnFuelAdapter := NewBurnFuelAdapter(obj)
 	burnFuelCommand := NewBurnFuelCommand(burnFuelAdapter)
-	err := burnFuelCommand.Execute()
+	_, err := burnFuelCommand.Execute()
 
 	require.Equal(t, nil, err)
 }
@@ -27,7 +27,7 @@ func TestBurnFuelErrorFuelNotEnough(t *testing.T) {
 
 	burnFuelAdapter := NewBurnFuelAdapter(obj)
 	burnFuelCommand := NewBurnFuelCommand(burnFuelAdapter)
-	err := burnFuelCommand.Execute()
+	_, err := burnFuelCommand.Execute()
 
 	require.Equal(t, ErrFuelNotEnough, err)
 }
@@ -37,7 +37,7 @@ func TestBurnFuelErrorGetFuel(t *testing.T) {
 
 	burnFuelAdapter := NewBurnFuelAdapter(obj)
 	burnFuelCommand := NewBurnFuelCommand(burnFuelAdapter)
-	err := burnFuelCommand.Execute()
+	_, err := burnFuelCommand.Execute()
 
 	require.Equal(t, object.ErrNoDataByKey, err)
 }

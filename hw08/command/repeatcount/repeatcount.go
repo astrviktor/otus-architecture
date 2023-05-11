@@ -1,7 +1,8 @@
 package repeatcount
 
 import (
-	"otus-architecture/hw07/command"
+	"otus-architecture/hw08/command"
+	"otus-architecture/hw08/object"
 )
 
 type RepeatCountCommand struct {
@@ -18,9 +19,9 @@ func NewRepeatCountCommand(cmd command.CommandInterface, count int) *RepeatCount
 	}
 }
 
-func (c *RepeatCountCommand) Execute() error {
+func (c *RepeatCountCommand) Execute() (*object.Object, error) {
 	if c.repeat > c.count {
-		return nil
+		return nil, nil
 	}
 
 	c.repeat++

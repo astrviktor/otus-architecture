@@ -2,9 +2,9 @@ package move
 
 import (
 	"math"
-	"otus-architecture/hw07/additions/getters"
-	"otus-architecture/hw07/additions/vector"
-	"otus-architecture/hw07/object"
+	"otus-architecture/hw08/additions/getters"
+	"otus-architecture/hw08/additions/vector"
+	"otus-architecture/hw08/object"
 )
 
 type MoveAdapterMock struct {

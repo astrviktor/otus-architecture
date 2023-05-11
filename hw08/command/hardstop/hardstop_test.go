@@ -2,7 +2,7 @@ package hardstop
 
 import (
 	"github.com/stretchr/testify/require"
-	"otus-architecture/hw07/object"
+	"otus-architecture/hw08/object"
 	"testing"
 )
 
@@ -22,7 +22,7 @@ func TestHardStopOk(t *testing.T) {
 	hardStopAdapter := NewHardStopAdapter(obj)
 	hardStopCommand := NewHardStopCommand(hardStopAdapter)
 
-	err := hardStopCommand.Execute()
+	_, err := hardStopCommand.Execute()
 	require.Equal(t, nil, err)
 
 	<-testStopChannel

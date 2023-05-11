@@ -1,7 +1,8 @@
 package log
 
 import (
-	"otus-architecture/hw07/additions/logging"
+	"otus-architecture/hw08/additions/logging"
+	"otus-architecture/hw08/object"
 )
 
 type LogInterface interface {
@@ -16,12 +17,12 @@ func NewLogCommand(obj LogInterface) *LogCommand {
 	return &LogCommand{obj: obj}
 }
 
-func (c *LogCommand) Execute() error {
+func (c *LogCommand) Execute() (*object.Object, error) {
 	var e, err error
 
 	if e, err = c.obj.GetError(); err != nil {
-		return err
+		return nil, err
 	}
 
-	return logging.WriteErrorToLog(e)
+	return nil, logging.WriteErrorToLog(e)
 }

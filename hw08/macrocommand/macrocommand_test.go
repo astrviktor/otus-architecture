@@ -2,11 +2,11 @@ package macrocommand
 
 import (
 	"github.com/stretchr/testify/require"
-	"otus-architecture/hw07/additions/vector"
-	"otus-architecture/hw07/command/burnfuel"
-	"otus-architecture/hw07/command/checkfuel"
-	"otus-architecture/hw07/command/move"
-	"otus-architecture/hw07/object"
+	"otus-architecture/hw08/additions/vector"
+	"otus-architecture/hw08/command/burnfuel"
+	"otus-architecture/hw08/command/checkfuel"
+	"otus-architecture/hw08/command/move"
+	"otus-architecture/hw08/object"
 	"testing"
 )
 
@@ -35,7 +35,7 @@ func TestMacroCommendOk(t *testing.T) {
 		burnFuelCommand,
 	)
 
-	err := macroCommand.Execute()
+	_, err := macroCommand.Execute()
 	require.Equal(t, nil, err)
 
 	position, err := obj.GetProperty("Position")
@@ -72,7 +72,7 @@ func TestMacroCommendErrorFuelNotEnough(t *testing.T) {
 		burnFuelCommand,
 	)
 
-	err := macroCommand.Execute()
+	_, err := macroCommand.Execute()
 	require.Equal(t, checkfuel.ErrFuelNotEnough, err)
 
 }

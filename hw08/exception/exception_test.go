@@ -2,10 +2,10 @@ package exception
 
 import (
 	"github.com/stretchr/testify/require"
-	"otus-architecture/hw07/additions/queue"
-	"otus-architecture/hw07/additions/vector"
-	"otus-architecture/hw07/command/move"
-	"otus-architecture/hw07/object"
+	"otus-architecture/hw08/additions/queue"
+	"otus-architecture/hw08/additions/vector"
+	"otus-architecture/hw08/command/move"
+	"otus-architecture/hw08/object"
 	"reflect"
 	"testing"
 )
@@ -43,7 +43,7 @@ func TestExceptionAllOk(t *testing.T) {
 		require.Equal(t, expectedCommand[0], reflect.TypeOf(cmd).String())
 		expectedCommand = expectedCommand[1:]
 
-		err := cmd.Execute()
+		_, err := cmd.Execute()
 		if err != nil {
 			exceptionHandler.Handle(cmd, err)
 		}
@@ -84,7 +84,7 @@ func TestExceptionRunRepeatLog(t *testing.T) {
 		require.Equal(t, expectedCommand[0], reflect.TypeOf(cmd).String())
 		expectedCommand = expectedCommand[1:]
 
-		err := cmd.Execute()
+		_, err := cmd.Execute()
 		if err != nil {
 			exceptionHandler.Handle(cmd, err)
 		}
@@ -121,7 +121,7 @@ func TestExceptionRunRepeatRepeatLog(t *testing.T) {
 		require.Equal(t, expectedCommand[0], reflect.TypeOf(cmd).String())
 		expectedCommand = expectedCommand[1:]
 
-		err := cmd.Execute()
+		_, err := cmd.Execute()
 		if err != nil {
 			exceptionHandler.Handle(cmd, err)
 		}

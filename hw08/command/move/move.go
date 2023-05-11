@@ -2,36 +2,32 @@ package move
 
 import (
 	"errors"
-	"otus-architecture/hw07/additions/vector"
+	"otus-architecture/hw08/additions/vector"
+	"otus-architecture/hw08/object"
 )
 
-type MoveInterface interface {
-	GetPosition() (vector.Vector, error)
-	SetPosition(v vector.Vector) error
-	GetVelocity() (vector.Vector, error)
-}
-
 type MoveCommand struct {
-	obj MoveInterface
+	obj *MoveAdapter
 }
 
-func NewMoveCommand(obj MoveInterface) *MoveCommand {
+func NewMoveCommand(obj *MoveAdapter) *MoveCommand {
 	return &MoveCommand{obj: obj}
 }
 
-func (c *MoveCommand) Execute() error {
+func (c *MoveCommand) Execute() (*object.Object, error) {
 	var position, velocity vector.Vector
 	var err error
 
 	if position, err = c.obj.GetPosition(); err != nil {
-		return err
+		return nil, err
 	}
 
 	if velocity, err = c.obj.GetVelocity(); err != nil {
-		return err
+		return nil, err
 	}
 
-	return c.obj.SetPosition(vector.VectorPlus(position, velocity))
+	err = c.obj.SetPosition(vector.VectorPlus(position, velocity))
+	return c.obj.Object, err
 }
 
 var (

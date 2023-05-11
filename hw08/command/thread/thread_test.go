@@ -2,12 +2,12 @@ package thread
 
 import (
 	"github.com/stretchr/testify/require"
-	"otus-architecture/hw07/additions/queue"
-	"otus-architecture/hw07/additions/vector"
-	"otus-architecture/hw07/command/hardstop"
-	"otus-architecture/hw07/command/move"
-	"otus-architecture/hw07/command/softstop"
-	"otus-architecture/hw07/object"
+	"otus-architecture/hw08/additions/queue"
+	"otus-architecture/hw08/additions/vector"
+	"otus-architecture/hw08/command/hardstop"
+	"otus-architecture/hw08/command/move"
+	"otus-architecture/hw08/command/softstop"
+	"otus-architecture/hw08/object"
 	"testing"
 	"time"
 )
@@ -40,7 +40,7 @@ func TestThreadRunMove3TimesOk(t *testing.T) {
 	threadAdapter := NewThreadAdapter(threadObject)
 	threadCommand := NewThreadCommand(threadAdapter)
 
-	err := threadCommand.Execute()
+	_, err := threadCommand.Execute()
 	require.Equal(t, nil, err)
 
 	// to queue added: 3 move command
@@ -85,7 +85,7 @@ func TestThreadRunMove3TimesHardStop(t *testing.T) {
 	threadAdapter := NewThreadAdapter(threadObject)
 	threadCommand := NewThreadCommand(threadAdapter)
 
-	err := threadCommand.Execute()
+	_, err := threadCommand.Execute()
 	require.Equal(t, nil, err)
 
 	// hard stop command
@@ -138,7 +138,7 @@ func TestThreadRunMove3TimesSoftStop(t *testing.T) {
 	threadAdapter := NewThreadAdapter(threadObject)
 	threadCommand := NewThreadCommand(threadAdapter)
 
-	err := threadCommand.Execute()
+	_, err := threadCommand.Execute()
 	require.Equal(t, nil, err)
 
 	// soft stop command

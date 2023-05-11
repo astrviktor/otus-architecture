@@ -2,8 +2,8 @@ package getters
 
 import (
 	"errors"
-	"otus-architecture/hw07/additions/queue"
-	"otus-architecture/hw07/additions/vector"
+	"otus-architecture/hw08/additions/queue"
+	"otus-architecture/hw08/additions/vector"
 )
 
 func GetVector(i interface{}, err error) (vector.Vector, error) {
@@ -31,6 +31,45 @@ func GetInt(i interface{}, err error) (int, error) {
 
 	return value, nil
 }
+
+//func GetString(i interface{}, err error) (string, error) {
+//	if err != nil {
+//		return "", err
+//	}
+//
+//	value, ok := i.(string)
+//	if !ok {
+//		return "", ErrTypeCast
+//	}
+//
+//	return value, nil
+//}
+
+//func GetIoC(i interface{}, err error) (ioc.IoC, error) {
+//	if err != nil {
+//		return ioc.IoC{}, err
+//	}
+//
+//	value, ok := i.(ioc.IoC)
+//	if !ok {
+//		return ioc.IoC{}, ErrTypeCast
+//	}
+//
+//	return value, nil
+//}
+//
+//func GetMessage(i interface{}, err error) (broker.Message, error) {
+//	if err != nil {
+//		return broker.Message{}, err
+//	}
+//
+//	value, ok := i.(broker.Message)
+//	if !ok {
+//		return broker.Message{}, ErrTypeCast
+//	}
+//
+//	return value, nil
+//}
 
 func GetError(i interface{}, err error) (error, error) {
 	if err != nil {

@@ -2,7 +2,7 @@ package softstop
 
 import (
 	"github.com/stretchr/testify/require"
-	"otus-architecture/hw07/object"
+	"otus-architecture/hw08/object"
 	"testing"
 )
 
@@ -22,7 +22,7 @@ func TestSoftStopOk(t *testing.T) {
 	softStopAdapter := NewSoftStopAdapter(obj)
 	softStopCommand := NewSoftStopCommand(softStopAdapter)
 
-	err := softStopCommand.Execute()
+	_, err := softStopCommand.Execute()
 	require.Equal(t, nil, err)
 
 	<-testStopChannel

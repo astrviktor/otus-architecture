@@ -1,8 +1,8 @@
 package exception
 
 import (
-	"otus-architecture/hw07/command"
-	"otus-architecture/hw07/object"
+	"otus-architecture/hw08/command"
+	"otus-architecture/hw08/object"
 	"reflect"
 )
 

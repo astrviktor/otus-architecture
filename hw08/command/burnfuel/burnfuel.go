@@ -1,6 +1,9 @@
 package burnfuel
 
-import "errors"
+import (
+	"errors"
+	"otus-architecture/hw08/object"
+)
 
 type BurnFuelInterface interface {
 	GetFuel() (int, error)
@@ -16,29 +19,29 @@ func NewBurnFuelCommand(obj BurnFuelInterface) *BurnFuelCommand {
 	return &BurnFuelCommand{obj: obj}
 }
 
-func (c *BurnFuelCommand) Execute() error {
+func (c *BurnFuelCommand) Execute() (*object.Object, error) {
 	var fuel, fuelUse int
 	var err error
 
 	if fuel, err = c.obj.GetFuel(); err != nil {
-		return err
+		return nil, err
 	}
 
 	if fuelUse, err = c.obj.GetFuelUse(); err != nil {
-		return err
+		return nil, err
 	}
 
 	if fuel < fuelUse {
-		return ErrFuelNotEnough
+		return nil, ErrFuelNotEnough
 	}
 
 	fuel = fuel - fuelUse
 
 	if err = c.obj.SetFuel(fuel); err != nil {
-		return err
+		return nil, err
 	}
 
-	return nil
+	return nil, nil
 }
 
 var (

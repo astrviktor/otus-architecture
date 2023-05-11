@@ -1,5 +1,7 @@
 package softstop
 
+import "otus-architecture/hw08/object"
+
 type SoftStopInterface interface {
 	GetSoftStopChannel() (chan struct{}, error)
 }
@@ -12,13 +14,13 @@ func NewSoftStopCommand(obj SoftStopInterface) *SoftStopCommand {
 	return &SoftStopCommand{obj: obj}
 }
 
-func (c *SoftStopCommand) Execute() error {
+func (c *SoftStopCommand) Execute() (*object.Object, error) {
 	softStop, err := c.obj.GetSoftStopChannel()
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	softStop <- struct{}{}
 
-	return nil
+	return nil, nil
 }

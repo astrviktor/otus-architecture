@@ -31,5 +31,10 @@ func (o *Object) SetProperty(key string, object interface{}) {
 }
 
 var (
+	Games = make(map[int]map[int]*Object)
+	//GameObjects = make(map[int]*Object)
+)
+
+var (
 	ErrNoDataByKey = errors.New("no data by key")
 )
