@@ -9,3 +9,4 @@ tests:
 	cd ./hw08 && go test -v ./... && cd ..
 	cd ./hw09/apps/auth && go test -v ./... && cd ../../..
 	cd ./hw09/apps/server && go test -v ./... && cd ../../..
+	cd ./hw11 && go test -v ./... && cd ..
