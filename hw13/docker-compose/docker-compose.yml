@@ -1,0 +1,24 @@
+version: "2"
+
+services:
+
+  server:
+    build: ../apps/server
+    container_name: server
+    ports:
+      - "8008:8008"
+
+  auth:
+    build: ../apps/auth
+    container_name: auth
+    ports:
+      - "8009:8009"
+
+  newman:
+    build: ./newman
+    container_name: newman
+    depends_on:
+      - server
+      - auth
+    volumes:
+      - ../postman:/etc/newman
